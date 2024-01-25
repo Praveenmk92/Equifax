@@ -17,7 +17,7 @@ resource "aws_instance" "Myinstances" {
     }
   }
 
-  dynamic "tag" {
+  dynamic "tag2" {
     for_each = range(2)
     content {
       key   = "Environment"
@@ -25,7 +25,7 @@ resource "aws_instance" "Myinstances" {
     }
   }
 
-  dynamic "tag" {
+  dynamic "tag3" {
     for_each = range(2)
     content {
       key   = "Owner"

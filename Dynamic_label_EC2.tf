@@ -9,10 +9,27 @@ resource "aws_instance" "Myinstances" {
   ami           = "ami-0a3c3a20c09d6f377"
   instance_type = "t2.micro"
 
-  dynamic "Myinstances" {
+  dynamic "tag" {
     for_each = range(2)
     content {
-      name = "Dynamic_Instance-${instance.key + 1}"
+      key   = "Name"
+      value = "Instance-${tag.key + 1}"
+    }
+  }
+
+  dynamic "tag" {
+    for_each = range(2)
+    content {
+      key   = "Environment"
+      value = "Production-${tag.key + 1}"
+    }
+  }
+
+  dynamic "tag" {
+    for_each = range(2)
+    content {
+      key   = "Owner"
+      value = "Owner-${tag.key + 1}"
     }
   }
 }
